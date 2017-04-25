@@ -15,6 +15,33 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         \Yaf\Registry::set('config', $config);
     }
 
+
+    /**
+     * 自动加载
+     *
+     */
+    public function __initLoader() {
+        $loader = APP_PATH . '/vendor/autoload.php';
+        if (file_exists($loader)) {
+            \Yaf\Loader::import($loader);
+        }
+    }
+
+    public function _initDefaultDbAdapter()
+    {
+        if (class_exists('\Illuminate\Database\Capsule\Manager')) {
+            $config = \Yaf\Registry::get('config');
+            $capsule = new \Illuminate\Database\Capsule\Manager;
+            $capsule->addConnection($config->database->master->toArray());
+            $capsule->setEventDispatcher(new \Illuminate\Events\Dispatcher(new \Illuminate\Container\Container));
+            $capsule->setAsGlobal();
+            $capsule->bootEloquent();
+
+            class_alias('\Illuminate\Database\Capsule\Manager', 'DB');
+
+        }
+   }
+
     /**
      * 路由规则定义，如果没有需要，可以去除该代码
      * 

@@ -1,1 +1,0 @@
-<?php/*** @file application/modules/Index/controllers/News.php* * @author zhenyangze* @mail   zhenyangze@gmail.com * @time   日  4/23 23:34:49 2017*/class NewsController extends \Base\Controller_AbstractIndex {    public function index() {        echo 11;exit;    }}
