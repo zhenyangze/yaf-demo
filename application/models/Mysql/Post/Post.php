@@ -9,5 +9,5 @@
 namespace Mysql\Post;
 
 class PostModel extends \Mysql\AbstractModel {
-    protected $table = 'wp_posts';
+    public $table = 'wp_posts';
 }

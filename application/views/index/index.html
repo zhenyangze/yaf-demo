@@ -1,1 +1,1 @@
-<p><?=$hello?></p>this is userInfo:<pre><?php print_r($userInfo); ?></pre>
+<h4><?=$hello?></h4><pre><?php print_r($userInfo); ?></pre><?php foreach($postList as $postInfo){echo sprintf("%d.%s<br>", $postInfo['ID'], $postInfo['post_title']);} ?>

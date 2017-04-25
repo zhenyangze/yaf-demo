@@ -15,15 +15,15 @@ abstract class AbstractModel extends Model{
     /**
      * 表名
      */
-    protected $table = NULL;
+    public $table = NULL;
 
     /**
      * 主键
      */
-    protected $primaryKey = 'id';
+    public $primaryKey = 'id';
 
     /**
      * 指定是否模型应该被戳记时间
      */
-    protected $timestamps = false;
+    public $timestamps = false;
 }
