@@ -1,9 +1,9 @@
 <?php
 /**
 * @file application/library/Function/Array.php
-* 
+*
 * @author zhenyangze
-* @mail   zhenyangze@gmail.com 
+* @mail   zhenyangze@gmail.com
 * @time   2017年04月26日 星期三 10时50分55秒
 */
 
@@ -20,7 +20,6 @@
  * @author gengxl <gengxl@51talk.com>
  */
 if (!function_exists('array_column')) {
-
     function array_column($input, $column_key, $index_key = null)
     {
         if ($index_key !== null) {
@@ -60,5 +59,4 @@ if (!function_exists('array_column')) {
         }
         return $values;
     }
-
 }

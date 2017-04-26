@@ -1,9 +1,9 @@
 <?php
 /**
 * @file public/index.php
-* 
+*
 * @author zhenyangze
-* @mail   zhenyangze@gmail.com 
+* @mail   zhenyangze@gmail.com
 * @time   日  4/23 17:18:09 2017
 */
 define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));

@@ -3,13 +3,15 @@
 /**
  * 当有未捕获的异常, 则控制流会流到这里
  */
-class ErrorController extends \Core\Controller_Abstract {
-
-    public function init() {
+class ErrorController extends \Core\Controller_Abstract
+{
+    public function init()
+    {
         \Yaf\Dispatcher::getInstance()->disableView();
     }
 
-    public function errorAction($exception) {
+    public function errorAction($exception)
+    {
         if ($exception->getCode() > 100000) {
             //这里可以捕获到应用内抛出的异常
             echo $exception->getCode();
@@ -26,10 +28,9 @@ class ErrorController extends \Core\Controller_Abstract {
                 echo $exception->getMessage();
                 exit();
                 break;
-            default :
+            default:
                 break;
         }
         throw $exception;
     }
-
 }

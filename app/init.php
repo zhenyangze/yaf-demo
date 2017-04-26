@@ -1,21 +1,21 @@
 <?php
 /**
  * @file application/init.php
- * 
+ *
  * @author zhenyangze
- * @mail   zhenyangze@gmail.com 
+ * @mail   zhenyangze@gmail.com
  * @time   日  4/23 17:25:02 2017
  */
 date_default_timezone_set("Asia/Shanghai");
 mb_internal_encoding("UTF-8");
 
-switch(ini_get('yaf.environ')) {
+switch (ini_get('yaf.environ')) {
 case 'DEV':
 case 'TEST':
     error_reporting(E_ALL ^E_NOTICE);
     $logFile = ROOT_PATH.'/log/php/'.date('Y-m-d').'.log';
 
-    if(!file_exists($logFile)){
+    if (!file_exists($logFile)) {
         touch($logFile);
     }
 
@@ -29,7 +29,7 @@ case 'PRODUCT':
     error_reporting(E_ALL ^E_NOTICE);
     $logFile = ROOT_PATH.'/log/php/'.date('Y-m-d').'.log';
 
-    if(!file_exists($logFile)){
+    if (!file_exists($logFile)) {
         touch($logFile);
     }
 

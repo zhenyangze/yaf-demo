@@ -1,9 +1,9 @@
 <?php
 /**
  * @file application/library/Function/Http.php
- * 
+ *
  * @author zhenyangze
- * @mail   zhenyangze@gmail.com 
+ * @mail   zhenyangze@gmail.com
  * @time   2017年04月26日 星期三 11时03分10秒
  */
 
@@ -12,22 +12,22 @@
  * @param string $url
  */
 if (!function_exists('http_get')) {
-
-    function http_get($url){
+    function http_get($url)
+    {
         $oCurl = curl_init();
-        if(stripos($url,"https://")!==FALSE){
-            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        if (stripos($url, "https://")!==false) {
+            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($oCurl, CURLOPT_SSLVERSION, 1); //CURL_SSLVERSION_TLSv1
         }
         curl_setopt($oCurl, CURLOPT_URL, $url);
-        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
         $sContent = curl_exec($oCurl);
         $aStatus = curl_getinfo($oCurl);
         curl_close($oCurl);
-        if(intval($aStatus["http_code"])==200){
+        if (intval($aStatus["http_code"])==200) {
             return $sContent;
-        }else{
+        } else {
             return false;
         }
     }
@@ -41,10 +41,11 @@ if (!function_exists('http_get')) {
  * @return string content
  */
 if (!function_exists('http_post')) {
-    function http_post($url, $param, $post_file=false){
+    function http_post($url, $param, $post_file=false)
+    {
         $oCurl = curl_init();
-        if (stripos($url,"https://") !== FALSE) {
-            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        if (stripos($url, "https://") !== false) {
+            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($oCurl, CURLOPT_SSLVERSION, 1); //CURL_SSLVERSION_TLSv1
         }
@@ -52,21 +53,21 @@ if (!function_exists('http_post')) {
             $strPOST = $param;
         } else {
             $aPOST = array();
-            foreach($param as $key=>$val){
+            foreach ($param as $key=>$val) {
                 $aPOST[] = $key."=".urlencode($val);
             }
             $strPOST =  join("&", $aPOST);
         }
         curl_setopt($oCurl, CURLOPT_URL, $url);
-        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt($oCurl, CURLOPT_POST,true);
-        curl_setopt($oCurl, CURLOPT_POSTFIELDS,$strPOST);
+        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($oCurl, CURLOPT_POST, true);
+        curl_setopt($oCurl, CURLOPT_POSTFIELDS, $strPOST);
         $sContent = curl_exec($oCurl);
         $aStatus = curl_getinfo($oCurl);
         curl_close($oCurl);
-        if(intval($aStatus["http_code"])==200){
+        if (intval($aStatus["http_code"])==200) {
             return $sContent;
-        }else{
+        } else {
             return false;
         }
     }
@@ -79,28 +80,32 @@ if (!function_exists('http_post')) {
  * @return mixed
  */
 if (!function_exists('get_client_ip')) {
-    function get_client_ip($type = 0, $adv = false) {
+    function get_client_ip($type = 0, $adv = false)
+    {
         $type       =  $type ? 1 : 0;
-        static $ip  =   NULL;
-        if ($ip !== NULL) return $ip[$type];
-        if($adv){
+        static $ip  =   null;
+        if ($ip !== null) {
+            return $ip[$type];
+        }
+        if ($adv) {
             if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
                 $arr    =   explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-                $pos    =   array_search('unknown',$arr);
-                if(false !== $pos) unset($arr[$pos]);
+                $pos    =   array_search('unknown', $arr);
+                if (false !== $pos) {
+                    unset($arr[$pos]);
+                }
                 $ip     =   trim($arr[0]);
-            }elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
+            } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
                 $ip     =   $_SERVER['HTTP_CLIENT_IP'];
-            }elseif (isset($_SERVER['REMOTE_ADDR'])) {
+            } elseif (isset($_SERVER['REMOTE_ADDR'])) {
                 $ip     =   $_SERVER['REMOTE_ADDR'];
             }
-        }elseif (isset($_SERVER['REMOTE_ADDR'])) {
+        } elseif (isset($_SERVER['REMOTE_ADDR'])) {
             $ip     =   $_SERVER['REMOTE_ADDR'];
         }
         // IP地址合法验证
-        $long = sprintf("%u",ip2long($ip));
+        $long = sprintf("%u", ip2long($ip));
         $ip   = $long ? array($ip, $long) : array('0.0.0.0', 0);
         return $ip[$type];
     }
 }
-

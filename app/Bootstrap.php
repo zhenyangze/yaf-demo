@@ -5,12 +5,14 @@
  * 所有在Bootstrap类中定义的, 以_init开头的方法, 都会被依次调用
  * 而这些方法都可以接受一个\Yaf\Dispatcher实例作为参数.
  */
-class Bootstrap extends \Yaf\Bootstrap_Abstract {
+class Bootstrap extends \Yaf\Bootstrap_Abstract
+{
 
     /**
      * 把配置存到注册表
      */
-    public function _initConfig() {
+    public function _initConfig()
+    {
         $config = \Yaf\Application::app()->getConfig();
         \Yaf\Registry::set('config', $config);
         //\Yaf\Dispatcher::getInstance()->autoRender(FALSE); // 关闭自动加载模板
@@ -21,7 +23,8 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
      * 自动加载
      *
      */
-    public function _initLoader() {
+    public function _initLoader()
+    {
         $loader = ROOT_PATH . '/vendor/autoload.php';
         if (file_exists($loader)) {
             \Yaf\Registry::set('load_composer', true);
@@ -32,12 +35,12 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     /**
      * 全局函数
      *
-     * @return 
+     * @return
      */
     public function _initFunction()
     {
         $funcFileList = glob(ROOT_PATH . '/application/library/Function/*.php');
-        foreach($funcFileList as $file) {
+        foreach ($funcFileList as $file) {
             \Yaf\Loader::import($file);
         }
     }
@@ -45,7 +48,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     /**
      * 数据库配置初始化
      *
-     * @return 
+     * @return
      */
     public function _initDefaultDbAdapter()
     {
@@ -63,10 +66,11 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     /**
      * 路由规则定义，如果没有需要，可以去除该代码
-     * 
+     *
      * @param \Yaf\Dispatcher $dispatcher
      */
-    public function _initRoute(\Yaf\Dispatcher $dispatcher) {
+    public function _initRoute(\Yaf\Dispatcher $dispatcher)
+    {
         $config = new \Yaf\Config\Ini(ROOT_PATH . '/conf/route.ini', 'common');
         if ($config->routes) {
             $router = \Yaf\Dispatcher::getInstance()->getRouter();
@@ -105,16 +109,16 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         );
 
         $router->addRoute('regex', $route);
-
     }
 
     /**
      * 获取url.ini配置的地址
-     * 
+     *
      * @param string $name
-     * @return string 
+     * @return string
      */
-    public static function getUrlIniConfig($name) {
+    public static function getUrlIniConfig($name)
+    {
         static $config = null;
         if ($config === null) {
             $config = new \Yaf\Config\Ini(ROOT_PATH . '/conf/url.ini', ini_get('yaf.environ'));
@@ -129,9 +133,9 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         return $urlConf[$name];
     }
 
-    public function _initPlugin(\Yaf\Dispatcher $dispatcher) {
+    public function _initPlugin(\Yaf\Dispatcher $dispatcher)
+    {
         //$router = new RouterPlugin();
         //$dispatcher->registerPlugin($router);
     }
-
 }

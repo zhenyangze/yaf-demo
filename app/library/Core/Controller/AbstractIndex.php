@@ -1,9 +1,9 @@
 <?php
 /**
 * @file AbstractIndex.php
-* 
+*
 * @author zhenyangze
-* @mail   zhenyangze@gmail.com 
+* @mail   zhenyangze@gmail.com
 * @time   日  4/23 18:07:48 2017
 */
 
@@ -14,6 +14,6 @@ namespace Core;
  *
  * @package Core
  */
-abstract class Controller_AbstractIndex extends \Core\Controller_Abstract {
-    
+abstract class Controller_AbstractIndex extends \Core\Controller_Abstract
+{
 }
