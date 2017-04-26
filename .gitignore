@@ -1,6 +1,8 @@
 tags
+.cache
 .tags
 .project
 .padawan
+.php_cs.cache
 composer.lock
 vendor/
