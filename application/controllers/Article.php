@@ -6,7 +6,7 @@
 * @mail   zhenyangze@gmail.com 
 * @time   日  4/23 23:47:05 2017
 */
-class articleController extends \Base\Controller_AbstractIndex{
+class articleController extends \Core\Controller_AbstractIndex{
     public function detailAction() {
         $categoryId = $this->getRequest()->getParam("categoryID", 0);
         $articleId = $this->getRequest()->getParam("articleID", 0);

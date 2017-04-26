@@ -6,7 +6,7 @@
 * @mail   zhenyangze@gmail.com 
 * @time   日  4/23 18:41:34 2017
 */
-class IndexController extends \Base\Controller_AbstractIndex {
+class IndexController extends \Core\Controller_AbstractIndex {
 
     public function indexAction() {
         $userModel = new \Service\User\UserModel();

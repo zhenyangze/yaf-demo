@@ -3,7 +3,7 @@
 /**
  * 当有未捕获的异常, 则控制流会流到这里
  */
-class ErrorController extends \Base\Controller_Abstract {
+class ErrorController extends \Core\Controller_Abstract {
 
     public function init() {
         \Yaf\Dispatcher::getInstance()->disableView();

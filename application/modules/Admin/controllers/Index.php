@@ -6,7 +6,7 @@
 * @mail   zhenyangze@gmail.com 
 * @time   日  4/23 23:38:08 2017
 */
-class IndexController extends \Base\Controller_AbstractAdmin {
+class IndexController extends \Core\Controller_AbstractAdmin {
     public function IndexAction() {
         echo 'Admin';exit;
     }

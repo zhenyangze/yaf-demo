@@ -6,7 +6,7 @@
 * @mail   zhenyangze@gmail.com 
 * @time   日  4/23 18:07:34 2017
 */
-namespace Base;
+namespace Core;
 
 /**
  * 控制器抽象类
