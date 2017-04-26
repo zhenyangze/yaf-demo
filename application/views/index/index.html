@@ -1,1 +1,7 @@
-<h4><?=$hello?></h4><pre><?php print_r($userInfo); ?></pre><?php foreach($postList as $postInfo){echo sprintf("%d.%s<br>", $postInfo['ID'], $postInfo['post_title']);} ?>
+<h4><?=$hello?></h4>
+<pre>
+<?php print_r($userInfo); ?>
+</pre>
+<?php foreach($postList as $postInfo){
+echo sprintf("%d.%s<br>", $postInfo['ID'], $postInfo['post_title']);
+} ?>

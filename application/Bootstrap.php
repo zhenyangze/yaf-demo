@@ -13,6 +13,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     public function _initConfig() {
         $config = \Yaf\Application::app()->getConfig();
         \Yaf\Registry::set('config', $config);
+        //\Yaf\Dispatcher::getInstance()->autoRender(FALSE); // 关闭自动加载模板
     }
 
 
@@ -23,10 +24,29 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     public function _initLoader() {
         $loader = APP_PATH . '/vendor/autoload.php';
         if (file_exists($loader)) {
+            \Yaf\Registry::set('load_composer', true);
             \Yaf\Loader::import($loader);
         }
     }
 
+    /**
+     * 全局函数
+     *
+     * @return 
+     */
+    public function _initFunction()
+    {
+        $funcFileList = glob(APP_PATH . '/application/library/Function/*.php');
+        foreach($funcFileList as $file) {
+            \Yaf\Loader::import($file);
+        }
+    }
+
+    /**
+     * 数据库配置初始化
+     *
+     * @return 
+     */
     public function _initDefaultDbAdapter()
     {
         if (class_exists('Illuminate\Database\Capsule\Manager')) {
