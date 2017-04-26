@@ -6,9 +6,9 @@
 * @mail   zhenyangze@gmail.com 
 * @time   日  4/23 17:18:09 2017
 */
-define("APP_PATH", realpath(dirname(__FILE__) . '/../'));
+define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
 
-require APP_PATH.'/application/init.php';
+require ROOT_PATH.'/application/init.php';
 
-$app = new \Yaf\Application(APP_PATH . "/conf/application.ini", ini_get('yaf.environ'));
+$app = new \Yaf\Application(ROOT_PATH . "/conf/application.ini", ini_get('yaf.environ'));
 $app->bootstrap()->run();

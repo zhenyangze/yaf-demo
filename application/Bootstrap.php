@@ -22,7 +22,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
      *
      */
     public function _initLoader() {
-        $loader = APP_PATH . '/vendor/autoload.php';
+        $loader = ROOT_PATH . '/vendor/autoload.php';
         if (file_exists($loader)) {
             \Yaf\Registry::set('load_composer', true);
             \Yaf\Loader::import($loader);
@@ -36,7 +36,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
      */
     public function _initFunction()
     {
-        $funcFileList = glob(APP_PATH . '/application/library/Function/*.php');
+        $funcFileList = glob(ROOT_PATH . '/application/library/Function/*.php');
         foreach($funcFileList as $file) {
             \Yaf\Loader::import($file);
         }
@@ -67,7 +67,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
      * @param \Yaf\Dispatcher $dispatcher
      */
     public function _initRoute(\Yaf\Dispatcher $dispatcher) {
-        $config = new \Yaf\Config\Ini(APP_PATH . '/conf/route.ini', 'common');
+        $config = new \Yaf\Config\Ini(ROOT_PATH . '/conf/route.ini', 'common');
         if ($config->routes) {
             $router = \Yaf\Dispatcher::getInstance()->getRouter();
             $router->addConfig($config->routes);
@@ -117,7 +117,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     public static function getUrlIniConfig($name) {
         static $config = null;
         if ($config === null) {
-            $config = new \Yaf\Config\Ini(APP_PATH . '/conf/url.ini', ini_get('yaf.environ'));
+            $config = new \Yaf\Config\Ini(ROOT_PATH . '/conf/url.ini', ini_get('yaf.environ'));
         }
         $urlConf = $config->get('config.url');
         if ($urlConf === null) {

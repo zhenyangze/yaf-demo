@@ -13,7 +13,7 @@ switch(ini_get('yaf.environ')) {
 case 'DEV':
 case 'TEST':
     error_reporting(E_ALL ^E_NOTICE);
-    $logFile = APP_PATH.'/log/php/'.date('Y-m-d').'.log';
+    $logFile = ROOT_PATH.'/log/php/'.date('Y-m-d').'.log';
 
     if(!file_exists($logFile)){
         touch($logFile);
@@ -27,7 +27,7 @@ case 'TEST':
 
 case 'PRODUCT':
     error_reporting(E_ALL ^E_NOTICE);
-    $logFile = APP_PATH.'/log/php/'.date('Y-m-d').'.log';
+    $logFile = ROOT_PATH.'/log/php/'.date('Y-m-d').'.log';
 
     if(!file_exists($logFile)){
         touch($logFile);
