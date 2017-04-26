@@ -8,7 +8,7 @@
 */
 define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
 
-require ROOT_PATH.'/application/init.php';
+require ROOT_PATH.'/app/init.php';
 
 $app = new \Yaf\Application(ROOT_PATH . "/conf/application.ini", ini_get('yaf.environ'));
 $app->bootstrap()->run();

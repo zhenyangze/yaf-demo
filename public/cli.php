@@ -7,7 +7,7 @@
 * @time   2017年04月26日 星期三 09时44分17秒
 */
 define("ROOT_PATH", realpath(dirname(__FILE__) . '/../'));
-define("APP_PATH", ROOT_PATH  . 'Application');
+define("APP_PATH", ROOT_PATH  . '/app');
 
 require APP_PATH.'/init.php';
 
